@@ -40,7 +40,7 @@ static inline void set_microros_transports(){
 	);
 }
 
-#if defined(TARGET_STM32F4)
+#if defined(TARGET_STM32F4) || defined(ARDUINO_ARCH_STM32)
 
 #include <Arduino.h>
 #include <EthernetUdp.h>
@@ -60,7 +60,7 @@ static inline void set_microros_transports(){
 #include <PortentaEthernet.h>
 #endif
 
-#if defined(TARGET_STM32F4) || defined(ARDUINO_TEENSY41)  || defined(TARGET_PORTENTA_H7_M7)
+#if defined(TARGET_STM32F4) || defined(ARDUINO_ARCH_STM32) || defined(ARDUINO_TEENSY41)  || defined(TARGET_PORTENTA_H7_M7)
 extern "C" bool arduino_native_ethernet_udp_transport_open(struct uxrCustomTransport * transport);
 extern "C" bool arduino_native_ethernet_udp_transport_close(struct uxrCustomTransport * transport);
 extern "C" size_t arduino_native_ethernet_udp_transport_write(struct uxrCustomTransport* transport, const uint8_t * buf, size_t len, uint8_t * err);
